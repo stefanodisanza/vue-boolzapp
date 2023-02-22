@@ -4,7 +4,7 @@ var app = new Vue({
 		contacts: [
 			{
 				name: 'Michele',
-				avatar: '../../assets/img/avatar_1.jpeg',
+				avatar: '_1',
 				visible: true,
 				messages: [
 					{
@@ -26,7 +26,7 @@ var app = new Vue({
 			},
 			{
 				name: 'Fabio',
-				avatar: '../../assets/img/avatar_2.jpeg',
+				avatar: '_2',
 				visible: true,
 				messages: [
 					{
@@ -48,7 +48,7 @@ var app = new Vue({
 			},
 			{
 				name: 'Samuele',
-				avatar: '../../assets/img/avatar_3.jpeg',
+				avatar: '_3',
 				visible: true,
 				messages: [
 					{
@@ -70,7 +70,7 @@ var app = new Vue({
 			},
 			{
 				name: 'Luisa',
-				avatar: '../../assets/img/avatar_4.jpeg',
+				avatar: '_4',
 				visible: true,
 				messages: [
 					{
