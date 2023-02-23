@@ -146,12 +146,39 @@ var app = new Vue(
                 },
                                
             ],
+            currentDate: dayjs().format('DD/MM/YYYY HH:mm:ss'),
             currentContact : 0,
+            messageText: "",
+            contactText: "",
         },
         methods: {
             setIndexContact: function(position) {
                 this.currentContact = position;
                 return this.currentContact;
+            },
+            newMessage: function(contact) {
+                let newSentMessage = {
+                    date: this.currentDate,
+                    text: this.messageText,
+                    status: 'sent'
+                };
+
+                this.contacts[contact].messages.push(newSentMessage);
+
+                this.messageText = "";
+
+                setTimeout(
+                    ()=> {
+                        let newReceivedMessage = {
+                            date: this.currentDate,
+                            text: "Ok",
+                            status: 'received'
+                        };
+
+                        this.contacts[contact].messages.push(newReceivedMessage);
+
+                    },1000
+                );
             },
         },
     }

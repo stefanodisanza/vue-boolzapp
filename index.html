@@ -7,6 +7,8 @@
     <!-- vue cdn -->
     <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
     <!-- <script src="https://cdn.jsdelivr.net/npm/vue@2"></script> -->
+    <!-- day.js cdn -->
+    <script src="https://unpkg.com/dayjs@1.8.21/dayjs.min.js"></script>
     <!-- google font -->
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap" rel="stylesheet">
@@ -49,7 +51,7 @@
                     <div class="search-icon">
                         <i class="fas fa-search"></i>
                     </div>
-                    <input type="text" placeholder="Cerca o inizia una nuova chat">
+                    <input type="text" placeholder="Cerca o inizia una nuova chat" v-model="contactText" @keydown.enter="filteredList()">
                 </div>
                 <div class="contact-list">
                     <div v-for="(contact, index) in contacts" class="contact"
@@ -93,7 +95,7 @@
                     </div>
                     <div class="text-controls">
                         <i class="far fa-smile"></i>
-                        <input type="text" placeholder="Scrivi un messaggio">
+                        <input type="text" placeholder="Scrivi un messaggio" v-model="messageText" @keydown.enter="newMessage(currentContact)">
                         <i class="fas fa-microphone"></i>
                     </div>
                 </div>

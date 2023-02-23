@@ -155,6 +155,10 @@
 }
 
 #l-side .contact-list .contact .l-contact .last-message {
+    width: 200px; 
+    white-space: nowrap; 
+    overflow: hidden;
+    text-overflow: ellipsis;
     font-size: 14px;
     color: grey;
 }
@@ -234,6 +238,7 @@
     padding: 10px 10px 20px 10px;
     margin-bottom: 10px;
     border-radius: 10px;
+    word-break: break-all;
 }
 
 #r-side .message-area .message .message-date {
@@ -278,3 +283,5 @@
     border-radius: 10px;
     background-color: #fff;
 }
+
+
