@@ -2,97 +2,100 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <link rel="shortcut icon" href="./assets/img/favicon.png" type="image/x-icon"><meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BoolZap</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- vue cdn -->
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+    <!-- <script src="https://cdn.jsdelivr.net/npm/vue@2"></script> -->
+    <!-- google font -->
     <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet"> 
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w==" crossorigin="anonymous" />
-    <link rel="stylesheet" href="./assets/css/master.css">
-    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap" rel="stylesheet">
+    <!-- font awesome -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.1/css/all.css" integrity="sha384-vp86vTRFVJgpjF9jiIGPEEqYqlDwgyBgEF109VFjmqGmIY/Y4HV4d3Gp2irVfcrp" crossorigin="anonymous">
+    <!-- my css -->
+    <link rel="stylesheet" href="css/style.css">
+    <!-- bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+    <title>Boolzap</title>
 </head>
 <body>
-
-    <nav>
-        <section class="green-top"></section>
-    </nav>
-    <main>
-        <section class="main-container">
-            <div id="root">
-                <div class="container-chats">
-                    <div class="contact">
-                        <div class="info">
-                            <div class="left-info">
-                                <img src="./assets/img/avatar_io.jpeg" alt="">
-                                <h5>Stefano</h5>
-                            </div>
-                            <div class="right-icon">
-                                <i class="fas fa-spinner"></i>
-                                <i class="fas fa-comment-alt"></i>
-                                <i class="fas fa-ellipsis-v"></i>
-                            </div>
-                        </div>
-                        <div class="notifiche">
-                            <span id="bell"><i class="far fa-bell-slash"></i></span>
-                            <span>
-                                <h5>Ricevi notifiche di nuovi messaggi</h5>
-                                <a href="">Attiva le notifiche desktop</a>
-                            </span>
-                        </div>
-                        <div class="search">
-                            <input type="text" placeholder="Cerca o inizia una nuova chat">
-                        </div>
-                        <ul class="list">
-                            <li :class="{'bg-active': i == activeIndex}" class="list-chat" v-for= "(utente,i) in contacts" @click= "Active(i) ">
-                                <img :src="'./assets/img/avatar' + utente.avatar + '.jpg'" alt="user">
-                                <div class="info-c">
-                                    <span class="name-user">{{ utente.name }}</span>
-                                    <span class="msg-user">{{ lastMsg(i).text }}</span>    
-                                </div>
-                                <span class="date-user">{{ lastMsg(i).date }}</span>
-                            </li>
-                        </ul>
+    <div id="root">
+        
+        <div class="container">
+            <!-- left side -->
+            <div id="l-side">
+                <div class="user-nav">
+                    <div class="l-user-icons">
+                        <img src="./img/avatar_io.jpeg" alt="Avatar Utente">
+                        <span class="user-name">Stefano</span>
                     </div>
-                    <div class="chat">
-                        <div class="info-chat">
-                            <div class="info-chat-left">
-                                <img :src="'assets/img/avatar' + contacts[activeIndex].avatar + '.jpg' " alt="user">
-                                <div class="info-c">
-                                    <span class="name-user">{{ contacts[activeIndex].name }}</span>
-                                     <span class="msg-user">Ultimo accesso :{{ contacts[activeIndex].messages[contacts[activeIndex].messages.length - 1].date }}</span>    
-                                </div>
-
-                            </div>
-                            <div class="right-icon-chat">
-                                <i class="fas fa-search"></i>
-                                <i class="fas fa-paperclip"></i>
-                                <i class="fas fa-ellipsis-v"></i>
-                            </div>
-                        </div>
-                        <div class="main-chat">
-                            <span><p class="sent">Quanto sei frustrato?</p></span>
-                            <span><p class="received">Troppo!</p></span>
-                        </div>
-                        <div class="write-chat">
-                            <span><i class="far fa-smile"></i></span>
-                            <input type="text" placeholder="Scrivi messaggio">
-                            <span><i class="fas fa-microphone"></i></span>
-                        </div>
-                    </div>   
+                    <div class="r-user-icons">
+                        <i class="fas fa-circle-notch"></i>
+                        <i class="fas fa-comment-alt"></i>
+                        <i class="fas fa-ellipsis-v"></i>
+                    </div>
                 </div>
-
+                <div class="notifications">
+                    <div class="bell-background">
+                        <i class="fas fa-bell-slash"></i>
+                    </div>
+                    <div class="notifications-texts">
+                        <div class="strong">Ricevi notifiche di nuovi messaggi</div>
+                        <a href="#">Attiva le notifiche desktop</a>
+                    </div>           
+                </div>
+                <div class="chat-search">
+                    <div class="search-icon">
+                        <i class="fas fa-search"></i>
+                    </div>
+                    <input type="text" placeholder="Cerca o inizia una nuova chat">
+                </div>
+                <div class="contact-list">
+                    <div v-for="(contact, index) in contacts" class="contact">
+                        <div class="l-contact">
+                            <img :src="contacts[index].avatar" alt="Avatar Contatto">
+                            <div class="info">
+                                <div class="contact-name">{{contacts[index].name}}</div>
+                                <div class="last-access">{{contacts[index].messages[0].text}}</div>
+                            </div>
+                        </div>
+                        <div class="r-contact">
+                            <div class="message-time">{{contacts[index].messages[0].date}}</div>
+                        </div>
+                    </div>
+                </div>
             </div>
-        </section>
-    </main>
-
-
-
-
-
-<script src="./assets/js/dati.js"></script>
-<script src='https://cdn.jsdelivr.net/npm/vue'></script>
-<script src="./assets/js/main.js"></script>
-
-    
+            <!-- /left side -->
+            <!-- right side -->
+            <div id="r-side">
+                <div class="contact-nav">
+                    <div class="l-contact-icons">
+                        <img src="./img/avatar_1.jpeg" alt="Avatar Utente">
+                        <div class="contact-info">
+                            <div class="contact-name">Michele</div>
+                            <div class="last-access">Ultimo accesso alle ore 15:47</div>
+                        </div>
+                    </div>
+                    <div class="r-contact-icons">
+                        <i class="fas fa-search"></i>
+                        <i class="fas fa-paperclip"></i>
+                        <i class="fas fa-ellipsis-v"></i>
+                    </div>
+                </div>
+                <div class="message-area">
+                </div>
+                <div class="text-controls">
+                    <i class="far fa-smile"></i>
+                    <input type="text" placeholder="Scrivi un messaggio">
+                    <i class="fas fa-microphone"></i>
+                </div>
+            </div>
+            <!-- /right side -->
+        </div>
+        
+    </div>
+    <!-- bootstrap -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
+    <!-- my js -->
+    <script src="js/script.js"></script>
 </body>
 </html>
